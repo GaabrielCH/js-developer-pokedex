@@ -45,3 +45,19 @@ loadMoreButton.addEventListener('click', () => {
         loadPokemonItens(offset, limit)
     }
 })
+
+searchInput.addEventListener('input', (event) => {
+    const search = event.target.value.toLowerCase()
+
+    const pokemons = pokemonList.querySelectorAll('.pokemon')
+    pokemons.forEach((pokemon) => {
+        const name = pokemon.querySelector('.name').textContent.toLowerCase()
+        const number = pokemon.querySelector('.number').textContent.toLowerCase()
+
+        if (name.includes(search) || number.includes(search)) {
+            pokemon.style.display = 'flex'
+        } else {
+            pokemon.style.display = 'none'
+        }
+    })
+})
